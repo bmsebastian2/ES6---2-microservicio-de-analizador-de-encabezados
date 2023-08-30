@@ -15,12 +15,13 @@ app.get("/", function (req, res) {
 
 app.get("/api/whoami", function (req, res) {
   const ipAddress = req.header("x-forwarded-for") || req.socket.remoteAddress;
+  const lenguaje = req.header("Accept-Language");
+  const so = req.header("User-Agent");
   console.log(ipAddress);
   res.json({
     ipaddress: ipAddress,
-    language: "es-ES,es;q=0.9",
-    software:
-      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+    language: lenguaje,
+    software: so,
   });
 });
 
